@@ -1,0 +1,16 @@
+﻿@model cumulative_1.Models.Teacher
+@{
+    ViewBag.Title = "Show";
+    //recieve the teacher data
+    //render the data as html
+}
+
+<h2>@Model.FirstName @Model.LastName</h2>
+<div>
+    <p>Employee Number: @Model.EmployeeNumber</p>
+    <p>Hire Date: @Model.HireDate</p>
+    <p>Salary: $@Model.Salary/hr</p>
+    <p>Class: @Model.Course - @Model.ClassName</p>
+</div>
+
+  
