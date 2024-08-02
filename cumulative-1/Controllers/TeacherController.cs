@@ -38,6 +38,7 @@ namespace cumulative_1.Controllers
             return View(SelectedTeacher);
         }
 
+        //GOAL : Direct the user to a page to confirm that they want to delete this user
         //GET : Teacher/DeleteConfirm/{id}
         public ActionResult DeleteConfirm(int id)
         {
@@ -47,6 +48,7 @@ namespace cumulative_1.Controllers
             return View(NewTeacher);
         }
 
+        //GOAL : Delete the user from the SQL database
         //POST : /Teacher/Delete/{id}
         public ActionResult Delete(int id)
         {
@@ -55,22 +57,19 @@ namespace cumulative_1.Controllers
             return RedirectToAction("List");
         }
 
+        //GOAL : Direct the user to a form page where they can input details about a new teacher to add to the database
         //GET : /Teacher/New
         public ActionResult New()
         {
             return View();
         }
 
+        //GOAL : Take the user inputted form elements and send the data to the SQL server
         //POST : /Teacher/Create
         [HttpPost]
         public ActionResult Create(string teacherfname, string teacherlname, string employeenumber, decimal salary)
         {
-            //Identify that this method is running
-            
-
-            Debug.WriteLine("I have accessed the create method.");
-
-            //create a new teacher object
+            //Create a new teacher object
             Teacher NewTeacher = new Teacher();
 
             //Identify the inputs provided from the form and set them
@@ -80,8 +79,10 @@ namespace cumulative_1.Controllers
             NewTeacher.HireDate = DateTime.Now;
             NewTeacher.Salary = salary;
 
-            //instantiate a new controller
+            //Instantiate a new controller
             TeacherDataController controller = new TeacherDataController();
+
+            //Call the AddTeacher Function to add the user to the SQL database
             controller.AddTeacher(NewTeacher);
 
             return RedirectToAction("List");

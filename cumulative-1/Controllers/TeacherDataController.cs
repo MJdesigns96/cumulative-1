@@ -136,7 +136,7 @@ namespace cumulative_1.Controllers
         /// Deletes a teacher within the SQL database
         /// </summary>
         /// <param name="id"></param>
-        /// <example> POST : /api/TeacherDate/DeleteTeacher/3</example>
+        /// <example> POST : /api/TeacherData/DeleteTeacher/3</example>
         [HttpPost]
         public void DeleteTeacher(int id)
         {
