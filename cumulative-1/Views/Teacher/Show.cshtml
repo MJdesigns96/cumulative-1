@@ -4,13 +4,23 @@
     //recieve the teacher data
     //render the data as html
 }
+<head>
+    <link rel="stylesheet" href="~/Content/Site.css" />
+</head>
 
-<h2>@Model.FirstName @Model.LastName</h2>
-<div>
-    <p>Employee Number: @Model.EmployeeNumber</p>
-    <p>Hire Date: @Model.HireDate</p>
-    <p>Salary: $@Model.Salary/hr</p>
-    <p>Class: @Model.Course - @Model.ClassName</p>
+<div class="containershow">
+    <nav>
+        <a class="navlink" href="/Teacher/List">Back to Teachers</a>
+        <a class="dellink" href="/Teacher/DeleteConfirm/@Model.TeacherID">Delete</a>
+    </nav>
+    <h2>@Model.FirstName @Model.LastName</h2>
+    <div>
+        <p>Employee Number: @Model.EmployeeNumber</p>
+        <p>Hire Date: @Model.HireDate.ToString("dd-MMMM-yyyy")</p>
+        <p>Salary: $@Model.Salary/hr</p>
+        <p>Class: @Model.Course - @Model.ClassName</p>
+    </div>
 </div>
+
 
   

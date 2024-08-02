@@ -16,5 +16,8 @@ namespace cumulative_1.Models
         public decimal Salary { get; set; }
         public string Course { get; set; }
         public string ClassName { get; set; }
+
+        //parameter-less constructor function
+        public Teacher() { }
     }
 }
