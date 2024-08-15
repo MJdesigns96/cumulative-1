@@ -167,6 +167,49 @@ namespace cumulative_1.Controllers
         [HttpPost]
         public void AddTeacher([FromBody]Teacher NewTeacher)
         {
+
+            //validate information coming from the form
+            if (NewTeacher.FirstName != "" ||
+                NewTeacher.LastName != "" ||
+                NewTeacher.EmployeeNumber != "" ||
+                NewTeacher.Salary != 0)
+            {
+                //Create an instance of a connection
+                MySqlConnection Conn = School.AccessDatabase();
+
+                //Open the connection
+                Conn.Open();
+
+                //Establish a new query for the database
+                MySqlCommand cmd = Conn.CreateCommand();
+
+                //SQL text
+                cmd.CommandText = "insert into teachers (teacherfname, teacherlname, employeenumber, hiredate, salary) values (@TeacherFname, @TeacherLname,@EmployeeNumber,@HireDate,@Salary)";
+                cmd.Parameters.AddWithValue("@TeacherFname", NewTeacher.FirstName);
+                cmd.Parameters.AddWithValue("@TeacherLname", NewTeacher.LastName);
+                cmd.Parameters.AddWithValue("@EmployeeNumber", NewTeacher.EmployeeNumber);
+                cmd.Parameters.AddWithValue("@HireDate", NewTeacher.HireDate);
+                cmd.Parameters.AddWithValue("@Salary", NewTeacher.Salary);
+                cmd.Prepare();
+
+                cmd.ExecuteNonQuery();
+
+                //Close the connection
+                Conn.Close();
+            } else
+            {
+                Console.WriteLine("error with inputs");
+            }
+            
+        }
+
+        /// <summary>
+        /// update a teacher entry in the database
+        /// </summary>
+        /// <param name="Teacher"></param>
+        [HttpPost]
+        public void UpdateTeacher(int id, [FromBody] Teacher TeacherInfo) 
+        {
             //Create an instance of a connection
             MySqlConnection Conn = School.AccessDatabase();
 
@@ -177,12 +220,13 @@ namespace cumulative_1.Controllers
             MySqlCommand cmd = Conn.CreateCommand();
 
             //SQL text
-            cmd.CommandText = "insert into teachers (teacherfname, teacherlname, employeenumber, hiredate, salary) values (@TeacherFname, @TeacherLname,@EmployeeNumber,@HireDate,@Salary)";
-            cmd.Parameters.AddWithValue("@TeacherFname", NewTeacher.FirstName);
-            cmd.Parameters.AddWithValue("@TeacherLname", NewTeacher.LastName);
-            cmd.Parameters.AddWithValue("@EmployeeNumber", NewTeacher.EmployeeNumber);
-            cmd.Parameters.AddWithValue("@HireDate", NewTeacher.HireDate);
-            cmd.Parameters.AddWithValue("@Salary", NewTeacher.Salary);
+            cmd.CommandText = "UPDATE teachers set teacherid = @TeacherId, teacherfname = @TeacherFname, teacherlname = @TeacherLname, employeenumber = @EmployeeNumber, salary=@Salary where teacherid=@TeacherId";
+            cmd.Parameters.AddWithValue("@TeacherId", id);
+            cmd.Parameters.AddWithValue("@TeacherFname", TeacherInfo.FirstName);
+            cmd.Parameters.AddWithValue("@TeacherLname", TeacherInfo.LastName);
+            cmd.Parameters.AddWithValue("@EmployeeNumber", TeacherInfo.EmployeeNumber);
+            cmd.Parameters.AddWithValue("@HireDate", TeacherInfo.HireDate);
+            cmd.Parameters.AddWithValue("@Salary", TeacherInfo.Salary);
             cmd.Prepare();
 
             cmd.ExecuteNonQuery();

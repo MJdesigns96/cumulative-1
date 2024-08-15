@@ -15,18 +15,22 @@
         <div>
             <label for="teacherfname">First Name:</label>
             <input type="text" id="teacherfname" name="teacherfname" />
+            <div id="fNameError" style="display: none; color:red">Please check the first name.</div>
         </div>
         <div>
             <label for="teacherlname">Last Name:</label>
             <input type="text" id="teacherlname" name="teacherlname" />
+            <div id="lNameError" style="display: none; color:red">Please check the last name.</div>
         </div>
         <div>
             <label for="employeenumber">Employee Number:</label>
             <input type="text" id="employeenumber" name="employeenumber" value="T" />
+            <div id="employeeNumError" style="display: none; color:red">Please check the Employee Number.</div>
         </div>
         <div>
             <label for="salary">Salary:</label>
-            <input type="number" id="salary" name="salary" min="0" step=".01"/>
+            <input type="number" id="salary" name="salary" min="0" step=".01" />
+            <div id="salaryError" style="display: none; color:red">Please check the Salary.</div>
         </div>
         <div>
             <input type="submit" value="Create Author" />
