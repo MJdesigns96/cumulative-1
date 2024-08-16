@@ -35,7 +35,8 @@ function onLoad() {
             obj.LastName !== lName.value ||
             obj.EmployeeNumber !== employeeNum.value ||
             oldDateString !== teacherHireDate.value ||
-            obj.Salary.toFixed(2) !== salary.value) {
+            obj.Salary.toFixed(2) !== salary.value)
+        {
             formChange = true;
         }
         //if no changes have been made show a error block and request the user to change something

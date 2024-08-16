@@ -138,12 +138,12 @@ namespace cumulative_1.Controllers
         /// <summary>
         /// a method to send data changes to the SQL database and change them accordingly
         /// </summary>
-        /// <param name="id">teacher id</param>
-        /// <param name="teacherfname">teacher first name</param>
-        /// <param name="teacherlname">teacher last name</param>
-        /// <param name="employeenumber">the teacher's employee number</param>
-        /// <param name="hiredate">date of their hiring</param>
-        /// <param name="salary">the teacher's salary</param>
+        /// <param name="id">teacher id NUM</param>
+        /// <param name="teacherfname">teacher first name STRING</param>
+        /// <param name="teacherlname">teacher last name STRING</param>
+        /// <param name="employeenumber">the teacher's employee number STRING</param>
+        /// <param name="hiredate">date of their hiring DATETIME</param>
+        /// <param name="salary">the teacher's salary DECIMAL</param>
         /// <returns>a webpage that shows the current information about the teacher</returns>
         /// <example>
         /// POST : /Teacher/Update/10
